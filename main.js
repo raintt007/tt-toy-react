@@ -1,16 +1,25 @@
-for (let i of [1,2,3,4,5]) {
-    console.log(i)
+import {createElement, render, Component} from './toy-react.js';
+
+class MyComponent extends Component {
+    constructor() {
+        super();
+        this.state = {
+            a: 1,
+            b: 2
+        }
+    }
+    render() {
+        return <div>
+            <h1>myComponent</h1>
+            <p>{this.state.a.toString()}</p>
+            {this.children}
+        </div>
+    }
 }
 
 
-function createElement(tagName, attributes, ...children) {
-    
-    return document.createElement(tagName);
-
-}
-
-window.a = <div id="a" class="c">
+render(<MyComponent id="a" class="c">
+    <div>12345</div>
     <div></div>
     <div></div>
-    <div></div>
-</div>
+</MyComponent>, document.body)
